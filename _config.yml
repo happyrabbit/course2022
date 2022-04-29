@@ -1,6 +1,6 @@
 # Site settings
 title: Data Science Workshop
-subtitle: Introduction to Data Science, Machine Learning and Deep Learning
+subtitle: Data Science in Practice
 description: |
     Many aspects of day-to-day data science work are almost absent from the conventional 
     statistics literature and curriculum. Yet these activities account for a 
@@ -15,7 +15,6 @@ description: |
     professionals in the industry. No software download or installation is needed, 
     and the hands-on part is done through the internet browser with hands-on sessions 
     in Databrick's cloud environment or Colab. </br>  
-
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "course2022.scientistcafe.com" # the base hostname & protocol for your site
 syllabus: "https://course2022.scientistcafe.com/course-syllabus/"
