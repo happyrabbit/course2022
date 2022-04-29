@@ -1,0 +1,50 @@
+# Site settings
+title: Data Science Workshop
+subtitle: Introduction to Data Science, Machine Learning and Deep Learning
+description: |
+    AI has manifested itself in all areas of our lives and is one of the most 
+    exciting and fast-growing fields of research and application in the world 
+    of data science. This course will provide an overview of using R and Python 
+    for some of the most popular machine learning and deep learning models in 
+    real-world data science applications in the cloud environment. 
+    The sessions will step through the basic theoretical concepts behind 
+    those models and mainly focus on applications. You will learn the motivation 
+    and use cases of these models through hands-on exercises. 
+    This short course's main topics are: big data cloud environment, 
+    tree-based models, regularization methods, feedforward neural network, 
+    convolutional neural network, and recurrent neural network. </br>
+    </br>
+    This course is designed for audiences with a statistics education background, 
+    and it bridges the gap between traditional statisticians and data scientists. 
+    No software download or installation is needed, and everything is done 
+    through the internet browser with hands-on sessions in Databrick's 
+    cloud environment and Colab. </br>  
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "course2021.scientistcafe.com" # the base hostname & protocol for your site
+syllabus: "https://course2021.scientistcafe.com/course-syllabus/"
+githubdir: "happyrabbit/course2021"
+
+
+# Author/user information
+email: longqiman@gmail.com; mli@alumni.iastate.edu
+twitter_username: gossip_rabbit
+github_username:  happyrabbit
+authorurl: "https://scientistcafe.com/"
+# address: |
+#    San Francisco, California
+
+
+# Build settings
+markdown: kramdown
+
+# Other options
+permalink: blog/:year/:month/:title
+excerpt_separator: "<!--more-->"
+
+include: ['_images', '_css']
+
+# SEO stuff
+# google_author: ""
+# google_site_verification: ""
+# bing_webmastertools_id: ""
