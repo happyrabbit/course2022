@@ -5,16 +5,15 @@ description: |
     Many aspects of day-to-day data science work are almost absent from the 
     conventional statistics literature and curriculum. Yet these activities 
     account for a considerable share of the time and effort of data professionals 
-    in the industry. This short course, "Data Science in Practice," 
-    focuses on the practical side of data science and statistical analysis. </br>
+    in the industry. This short course focuses on the practical side of data science and statistical analysis. </br>
+    </br>
     This course aims to increase the visibility of industrial data science-related 
-    career, data workflows, data environment, 
-    project cycle, and most common techniques. It is designed for audiences 
+    career, data workflows, data environment, project cycle, and most common techniques. It is designed for audiences 
     with a statistics education background, and it bridges the gap between 
     traditional statisticians and data professionals in the industry. 
     No software download or installation is needed, and the hands-on 
     part is done through the internet browser with hands-on sessions 
-    in Databrick's cloud environment or Colab. </br>  
+    in Databrick's cloud environment or Colab.  
 
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "course2022.scientistcafe.com" # the base hostname & protocol for your site
