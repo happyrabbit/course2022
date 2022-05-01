@@ -1,29 +1,26 @@
 # Site settings
 title: Data Science Workshop
-subtitle: Introduction to Data Science, Machine Learning and Deep Learning
+subtitle: Data Science in Practice
 description: |
-    AI has manifested itself in all areas of our lives and is one of the most 
-    exciting and fast-growing fields of research and application in the world 
-    of data science. This course will provide an overview of using R and Python 
-    for some of the most popular machine learning and deep learning models in 
-    real-world data science applications in the cloud environment. 
-    The sessions will step through the basic theoretical concepts behind 
-    those models and mainly focus on applications. You will learn the motivation 
-    and use cases of these models through hands-on exercises. 
-    This short course's main topics are: big data cloud environment, 
-    tree-based models, regularization methods, feedforward neural network, 
-    convolutional neural network, and recurrent neural network. </br>
+    Many aspects of day-to-day data science work are almost absent from the 
+    conventional statistics literature and curriculum. Yet these activities 
+    account for a considerable share of the time and effort of data professionals 
+    in the industry. This short course, "Data Science in Practice," 
+    focuses on the practical side of data science and statistical analysis. </br>
     </br>
-    This course is designed for audiences with a statistics education background, 
-    and it bridges the gap between traditional statisticians and data scientists. 
-    No software download or installation is needed, and everything is done 
-    through the internet browser with hands-on sessions in Databrick's 
-    cloud environment and Colab. </br>  
+    This course aims to increase the visibility of industrial data science-related 
+    career, data workflows, data environment, 
+    project cycle, and most common techniques. It is designed for audiences 
+    with a statistics education background, and it bridges the gap between 
+    traditional statisticians and data professionals in the industry. 
+    No software download or installation is needed, and the hands-on 
+    part is done through the internet browser with hands-on sessions 
+    in Databrick's cloud environment or Colab. </br>  
 
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "course2021.scientistcafe.com" # the base hostname & protocol for your site
-syllabus: "https://course2021.scientistcafe.com/course-syllabus/"
-githubdir: "happyrabbit/course2021"
+url: "course2022.scientistcafe.com" # the base hostname & protocol for your site
+syllabus: "https://course2022.scientistcafe.com/course-syllabus/"
+githubdir: "happyrabbit/course2022"
 
 
 # Author/user information
