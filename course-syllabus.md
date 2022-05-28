@@ -6,7 +6,7 @@ permalink: /course-syllabus/
 
 | Topic | Duration | Materials |
 | :---: | :---: | :---: |
-| Data science as a career | 50 mins | [Slides]() |
+| Data science as a career | 50 mins | [Slides](https://course2022.scientistcafe.com/slides/Introduction) |
 | Break | 10 mins |  |
 | Data science project cycle  | 40 mins | [Slides]()   |
 | Break | 10 mins |  |
