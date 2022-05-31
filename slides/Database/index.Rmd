@@ -1,0 +1,157 @@
+---
+title: "Database and SQL"
+author: 'Hui Lin and Ming Li'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#5E8E3E",
+  secondary_color = "#95BF47",
+  inverse_header_color = "#FFFFFF"
+)
+```
+
+# [Course Website](https://course2022.scientistcafe.com/) and [Github](https://github.com/happyrabbit/course2022) 
+
+
+<center>
+<font size = "10">
+https://course2022.scientistcafe.com/
+</font>
+</center>
+
+---
+# Why?
+
+<p style="font-size:38px;">Because…</p>    
+
+--
+
+- <p style="font-size:28px;">We need data to do the magic</p>   
+
+--
+
+- <p style="font-size:28px;">There are a lot of data and getting data is not always easy</p>  
+
+--
+
+- <p style="font-size:28px;">We spend significant amount of time querying data</p> 
+
+--
+
+<p style="color:blue;font-size:28px;">Start from the building concepts: data warehouse, data pipeline and data modeling</p>
+
+---
+
+# What is a data warehouse?
+
+> From [Wikipedia](http://en.wikipedia.org/wiki/Database): A database is an organized collection of data.
+
+--
+
+.pull-left[
+- It is a database
+
+- Data collected from different sources (internal and external)
+
+- Support further data pipeline, analytics or report
+]
+
+.pull-right[
+<img src="images/data_warehouse.png" alt="HTML5 Icon" height="300px" />
+]
+
+---
+# Why data warehouse?
+
+.left-column[
+- **Persist data**
+- **Data quality**
+- **Central view**
+- **Model for different data usages**
+- **Query performance**
+- **Augment source**
+]
+
+.right-column[
+<img src="images/data_warehouse.png" alt="HTML5 Icon" height="400px" />
+]
+
+---
+
+# What is a data pipeline?
+
+> [Definition](https://www.webfx.com/blog/marketing/what-is-a-data-pipeline/): A data pipeline automatically moves data from one or more sources to a target destination.
+
+<center><img src="images/dbms.PNG" alt="HTML5 Icon" style="height:450px;"></center>
+
+---
+
+# Data model: data lake to data mart
+
+<center><img src="images/data_mart.PNG" alt="HTML5 Icon" style="height:500px;"></center>
+
+---
+
+# Building blocks for relational model
+
+1. Entities: business concepts (sales, product, location, customer etc.) 
+2. Attributes: characteristics of an entity
+3. Relationships: associations among different entities, can be one-to-many, many-to-many and one-to-one.
+
+```{r, echo=FALSE}
+# create data
+Year <- rep(2022, 6)
+Month <- rep("May", 6)
+Day <- c(1, 2, 3, 4, 5, 6)
+PK_Date_ID <- c(151, 152, 153, 154, 155, 156)
+# FK_Date_ID <- c("2022-05-01", "2022-05-01", "2022-05-01", "2022-05-02", "2022-05-05", "2022-05-06")
+dim_date <- data.frame(PK_Date_ID, Year, Month, Day)
+
+FK_Date_ID <- c(151, 151, 151, 152, 155, 156)
+FK_Location_ID <- c(25, 25, 30, 36, 48, 20)
+FK_Product_ID <- c(88, 76, 75, 88, 88, 88)
+FK_Customer_ID <- c(98752, 29573, 10947, 37257, 95726, 34729)
+Quantity <- c(40, 786, 21, 96, 115, 15)
+Amount <- Quantity*2.98
+fact_sales <- data.frame(FK_Date_ID, FK_Location_ID, FK_Product_ID, FK_Customer_ID, Quantity, Amount)
+```
+
+---
+
+# Fact table
+
+```{r, echo=FALSE}
+knitr::kable(head(fact), format = 'html')
+```
+
+
+---
+class: inverse center middle
+
+# Questions?
+

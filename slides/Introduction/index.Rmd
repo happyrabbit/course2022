@@ -213,12 +213,6 @@ This is **example only**. It does **NOT** represent the tiles v.s. skills in all
 <img src="images/ds_types.PNG" alt="HTML5 Icon" style="width:1000px;height:500px;">
 
 ---
-
-# Data Flow
-
-<img src="images/dbms.PNG" alt="HTML5 Icon" style="width:1000px;height:500px;">
-
----
 class: inverse center middle
 
 # What is the career path in data science?

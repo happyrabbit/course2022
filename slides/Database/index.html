@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Data science as a career</title>
+    <title>Database and SQL</title>
     <meta charset="utf-8" />
     <meta name="author" content="Hui Lin and Ming Li" />
     <script src="index_files/header-attrs/header-attrs.js"></script>
@@ -12,7 +12,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Data science as a career
+# Database and SQL
 ]
 .author[
 ### Hui Lin and Ming Li
@@ -36,199 +36,136 @@ https://course2022.scientistcafe.com/
 &lt;/center&gt;
 
 ---
-class: inverse center middle
+# Why?
 
-# What is data science?
-## A question with ever changing answers
-
----
-
-
-# 2012: Let the wild rumpus begin!
-
-![Google trends for "Data scientists"](images/googletrend.png)
-
----
-
-# 2012-2019: golden age of data science
-
-![](images/2012_2019.png)
----
-
-# 2012-2019: golden age of data science
-
-- 2013: [Universities offer courses in a hot new field data science](https://www.nytimes.com/2013/04/14/education/edlife/universities-offer-courses-in-a-hot-new-field-data-science.html), April 11 2013, New York Times
+&lt;p style="font-size:38px;"&gt;Because…&lt;/p&gt;    
 
 --
 
-- 2017: The data scientist skill table makes it look like a unicorn
+- &lt;p style="font-size:28px;"&gt;We need data to do the magic&lt;/p&gt;   
 
 --
 
-- 2018: Two aha moments
-  - A tale of two machine learning
-  - You don’t need to use machine learning to be a data scientist
+- &lt;p style="font-size:28px;"&gt;There are a lot of data and getting data is not always easy&lt;/p&gt;  
 
 --
 
-- 2019: three tracks of data science and de-demonization of deep learning ([What’s coming in TensorFlow 2.0](https://medium.com/tensorflow/whats-coming-in-tensorflow-2-0-d3663832e9b8), Jan 2019) 
+- &lt;p style="font-size:28px;"&gt;We spend significant amount of time querying data&lt;/p&gt; 
+
+--
+
+&lt;p style="color:blue;font-size:28px;"&gt;Start from the building concepts: data warehouse, data pipeline and data modeling&lt;/p&gt;
 
 ---
 
-# Is data scientist still sexy? 
+# What is a data warehouse?
 
-![](images/2019_2022.png)
-
----
-
-# Is data scientist still sexy? 
-
-- 2020 - 2021: pandemic, layoff and hiring freeze, hiring spree
+&gt; From [Wikipedia](http://en.wikipedia.org/wiki/Database): A database is an organized collection of data.
 
 --
 
 .pull-left[
-&lt;img src="https://media.giphy.com/media/NKBc1zpXB47Xa/giphy.gif" alt="HTML5 Icon" height="400px" /&gt;
-]
+- It is a database
 
---
+- Data collected from different sources (internal and external)
+
+- Support further data pipeline, analytics or report
+]
 
 .pull-right[
-&lt;img src="images/ThrowingAwayMoney.gif" alt="HTML5 Icon" height="400px" /&gt;
+&lt;img src="images/data_warehouse.png" alt="HTML5 Icon" height="300px" /&gt;
+]
+
+---
+# Why data warehouse?
+
+.left-column[
+- **Persist data**
+- **Data quality**
+- **Central view**
+- **Model for different data usages**
+- **Query performance**
+- **Augment source**
+]
+
+.right-column[
+&lt;img src="images/data_warehouse.png" alt="HTML5 Icon" height="400px" /&gt;
 ]
 
 ---
 
-# Is data scientist still sexy? 
+# What is a data pipeline?
 
-##  In demand but not sexy
+&gt; [Definition](https://www.webfx.com/blog/marketing/what-is-a-data-pipeline/): A data pipeline automatically moves data from one or more sources to a target destination.
 
----
-
-# What has changed?
-
-You tell someone: "I am a data scientist."
-
-.pull-left[
-&lt;img src="images/wow.gif" alt="HTML5 Icon" height="400px" /&gt;
-]
-
---
-
-.pull-right[
-&lt;img src="images/ok.gif" alt="HTML5 Icon" height="400px" /&gt;
-]
+&lt;center&gt;&lt;img src="images/dbms.PNG" alt="HTML5 Icon" style="height:450px;"&gt;&lt;/center&gt;
 
 ---
 
-# What has changed?
+# Data model: data lake to data mart
 
-- More DS education programs 
-
-- Title creation and shift: Analyst → scientist, scientist → research
-
-- Title inconsistency across different companies/industries 
-
-- Better job definition (**within an organization**)
-
-- Standard interviewing process
+&lt;center&gt;&lt;img src="images/data_mart.PNG" alt="HTML5 Icon" style="height:500px;"&gt;&lt;/center&gt;
 
 ---
 
-# Titles in/related to data science
+# Fact table
 
-- Data infrastructure engineer
-- Data engineer
-- Business intelligence (BI) engineer
-- Analytics engineer
-- Machine learning engineer
-- Data scientist
-- Economist
-- Applied scientist
-- Data analyst
-- Product analyst
-- Quant researcher: UX, market, finance
-- Research scientist
-- Quant analyst
-- Business analyst
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; FK_Date &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FK_Location &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FK_Product &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Quantity &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Amount &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2022-05-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 119.20 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2022-05-02 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 76 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 786 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2342.28 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2022-05-03 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62.58 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2022-05-04 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 286.08 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2022-05-05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 342.70 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2022-05-06 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 44.70 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
---
-
-### Identity crisis is real!
-
----
-
-# Three tracks of data science
-
-![](images/three_tracks1.png)
-
----
-
-# Three tracks of data science
-
-![](images/three_tracks2.png)
-
----
-
-# Three tracks of data science
-
-![](images/three_tracks3.png)
----
-
-# Technical key words (danger zone!)
-
-This is **example only**. It does **NOT** represent the tiles v.s. skills in all companies.
-
-- **Data infrastructure engineer**: _Go,Python, AWS/Google Cloud/Azure, logstash, Kafka, and Hadoop_
-- **Data engineer**: _spark/scala, python, SQL, AWS/Google Cloud/Azure, Data modeling_
-- **BI engineer**: _Tableau/looker/Mode etc, data visualization, SQL, Python_ 
-- **Data analyst**: _SQL, basic statistics, data visualization_
-- **Data scientist**: _R/Python, SQL, basic + applied statistics, data visualization, experimental design_
-- **Research scientist**: _R/Python, advanced statistics + experimental design, ML, research background, publications, conference contributions, algorithms_
-- **Applied scientist**: _Similar to research scientist, ML algorithm design, often with an expectation of basic software engineering skills_
-- **Machine Learning Engineer**: _More advanced software engineering skill set, algorithms, machine learning algorithm design, system design_
-- ...
-
----
-
-# Data Science Roles
-
-This is **example only**. It does **NOT** represent the tiles v.s. skills in all companies.
-
-&lt;img src="images/dsrole.png" alt="HTML5 Icon" style="height:300px;"&gt;
-
----
-
-# Data Science Types v.s Needs
-
-&lt;img src="images/ds_types.PNG" alt="HTML5 Icon" style="width:1000px;height:500px;"&gt;
-
----
-class: inverse center middle
-
-# What is the career path in data science?
----
-# IC v.s. People Manager
-
-![](images/level_map.png)
----
-# Startup v.s. Mature company (Pre IPO/Public)
-
-&lt;center&gt;
-&lt;img src="images/smallbig.png" alt="HTML5 Icon" style="width:700px;"&gt;
-&lt;/center&gt;
----
-
-# Reference
-
-- Short courses in the past: [2017](https://github.com/happyrabbit/CE_JSM2017), [2018](https://github.com/happyrabbit/DataScienceWorkshop2018), [2019](https://course2019.scientistcafe.com/), [2020](https://course2020.scientistcafe.com/), [2021](https://course2021.scientistcafe.com/)
-
-- (Kaggle) State of Data Science and Machine Learning: [2017](https://www.kaggle.com/datasets/kaggle/kaggle-survey-2017), [2018](https://www.kaggle.com/datasets/kaggle/kaggle-survey-2018), [2019](https://www.kaggle.com/c/kaggle-survey-2019),
-[2020](https://www.kaggle.com/c/kaggle-survey-2020/), [2021](https://www.kaggle.com/competitions/kaggle-survey-2021/overview)
-
-- [Data Scientist: The Sexiest Job of the 21st Century](https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century), Oct 2012, Harvard Business Review
-
--  [Universities offer courses in a hot new field data science](https://www.nytimes.com/2013/04/14/education/edlife/universities-offer-courses-in-a-hot-new-field-data-science.html), April 11 2013, New York Times
 
 ---
 class: inverse center middle

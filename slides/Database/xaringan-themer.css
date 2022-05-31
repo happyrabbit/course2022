@@ -147,7 +147,7 @@ a, a > code {
 }
 /* Two-column layout */
 .left-column {
-  width: 35%;
+  width: 20%;
   height: 92%;
   float: left;
 }
@@ -158,7 +158,7 @@ a, a > code {
   color: #5E8E3E;
 }
 .right-column {
-  width: 65%;
+  width: 75%;
   float: right;
   padding-top: 1em;
 }
