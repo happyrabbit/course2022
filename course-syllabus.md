@@ -12,7 +12,7 @@ permalink: /course-syllabus/
 | Break | 10 mins |  |
 | Big data platform| 40 mins | |
 |  |  |  |
-| Database and SQL | 60 mins |[Slides]() |
+| Database and SQL | 60 mins |[Slides](https://course2022.scientistcafe.com/slides/Database) |
 | Break | 30 mins | |
 | Big data and database hands on | 50 mins | [Databricks Community Edition](https://databricks.com/try-databricks), [Load data](), [Data wrangling]() |
 | Break | 10 mins | |

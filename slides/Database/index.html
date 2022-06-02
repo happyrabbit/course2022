@@ -108,64 +108,175 @@ https://course2022.scientistcafe.com/
 
 ---
 
+# Building blocks for relational model
+
+.left-column[
+1. **Entities**: business concepts (sales, product, location, customer etc.) 
+2. **Attributes**: characteristics of an entity
+3. **Relationships**: associations among different entities, can be one-to-many, many-to-many and one-to-one.
+]
+
+.right-column[
+&lt;img src="images/tables.PNG" alt="HTML5 Icon" style="height:450px;"&gt;
+]
+
+
+
+
+---
+
 # Fact table
+
+- Table containing measurements
+- All records have the same granularity defined by the business
+- Usually additive with timestamps but not always
+- Resolve one-to-many or many-to-many relationship
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; FK_Date &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; FK_Location &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; FK_Product &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FK_Date_ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FK_Location_ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FK_Product_ID &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; FK_Customer_ID &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Quantity &lt;/th&gt;
    &lt;th style="text-align:right;"&gt; Amount &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 2022-05-01 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 151 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 98752 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 40 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 119.20 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 2022-05-02 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 151 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 76 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29573 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 786 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 2342.28 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 2022-05-03 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 151 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10947 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 62.58 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 2022-05-04 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 152 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 36 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 37257 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 286.08 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 2022-05-05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 155 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 95726 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 342.70 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; 2022-05-06 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 156 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 34729 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 44.70 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+---
+
+# Dimension table
+
+- Table containing business elements
+- Fields contain element descriptions
+- Referenced by multiple fact tables
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; PK_Customer_ID &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; First_Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Last_Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Email &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Birthday &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 10947 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ayden &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dennis &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ayden@myemail.com &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Oct 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 29573 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Lillian &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Hoffman &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; lillian@myemail.com &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; May 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 34729 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Calvin &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Quinn &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; calvin@myemail.com &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Jun 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 37257 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Allie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; West &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; allie@myemail.com &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Nov 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 95726 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Sammy &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Carson &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; sammy@myemail.com &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Jun 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 98752 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Alice &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Chen &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; alice@myemail.com &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Jul 8 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# SQL 
+
+&gt; SQL (Structured Query Language) is a standard computer language for relational database management and data manipulation. 
+
+- **Query**, insert, update, modify (We only look at the first one)
+
+--
+
+## The SQL world can be overwhelming, but it follows the 20/80 rule...
+### We will cover the most used 20%
+
+- Basic: retrieve, filter, sort, aggregate, group
+
+- Intermediate: subquery, join
+
+- Advanced: data types/format, string and date, window function, pivoting data
 
 ---
 class: inverse center middle
