@@ -202,10 +202,126 @@ knitr::kable(head(dim_customer), format = 'html')
 
 ---
 
-# Retrieve: `SELECT` and `FROM`
+# Basic SQL
+
+.pull-left[
+
+**Retrieve**
+- Select `First_Name` and `Last_Name` from table `dim_customer`
+
+```sql
+SELECT First_Name, Last_Name 
+FROM
+dim_customer
+```
+
+**Filer**
+
+- Select the first 10 sales records with `Amount > 100`
+
+```sql
+SELECT *
+FROM fact_sales
+WHERE Amount > 100
+LIMIT 10
+```
+]
+
+--
+
+.pull-right[
+
+**Sort**
+
+- Select the top 10 sales records with `Amount > 100`, ordered by `Amount` from high to low
+
+```sql
+SELECT *
+FROM fact_sales
+WHERE Amount > 100
+ORDER BY Amount DESC
+LIMIT 10
+```
+
+**Aggregate** and **group**
+
+- Average `Amount` each customer buy (Other aggregate functions: `MAX`, `MIN` , `SUM`, `COUNT`)
+
+```sql
+SELECT FK_Customer_ID, AVG(Amount) as Avg_Amount
+FROM fact_sales
+GROUP BY FK_Customer_ID
+```
+]
+
+---
+
+# Basic SQL recap
 
 
+---
 
+# Subquery
+
+- **What is it?** query in query
+
+- **When do we need it?** get information from multiple sources
+
+--
+
+Example: name and email of customers who have had an order with `Amount > 100`. The `Amount` information is in table `fact_sales` and the customer information is in table `dim_customer`
+
+```SQL
+SELECT PK_Customer_ID, First_Name, Last_Name, Email
+FROM dim_customer
+WHERE PK_Customer_ID IN (
+		SELECT customerID
+		FROM fact_sales
+		WHERE Amount > 100
+		);
+```
+
+---
+# Subquery: best practice and considerations
+
+- There is no limit to the number of subqueries you can have
+
+- Performance slows when you nest too deeply
+
+- Readability deteriorates when you add more
+    - This website can [pre-format your SQL code](https://poorsql.com/)
+    - An alternative is to use **temporary table** (more later)
+    
+- Subqueries can be used in several places within a query
+
+--
+
+Example: calculate average amount of purchase per customer
+
+```sql
+SELECT total_amount/COUNT(FK_Customer_ID) AS average_per_customer
+  FROM (
+        SELECT FK_Customer_ID,
+               SUM(Amount) AS total_amount,
+          FROM fact_sales
+          GROUP BY 1
+       )
+```
+---
+# Join: The real power of SQL
+
+**Data retrieval from multiple tables in one query**
+
+**Different types of joins**
+
+---
+# Data types: the devil that drives you nuts
+
+---
+# Window function  
+
+---
+# Pivoting data
 
 ---
 class: inverse center middle
