@@ -314,8 +314,23 @@ SELECT total_amount/COUNT(FK_Customer_ID) AS average_per_customer
 
 **Different types of joins**
 
+- `INNER JOIN` selects records that have matching values in both tables
+- `LEFT JOIN` returns all rows from the left table, even if there are no matches in the right table 
+- `RIGHT JOIN` returns all rows from the right table
+- `FULL JOIN` returns rows in either table
+
 ---
 # Data types: the devil that drives you nuts
+
+Three main data types: **string**, **numeric**, and **date/time**
+
+| Data type 	| Stored as (example) 	| Description                                                                                	|
+|-----------	|---------------------	|--------------------------------------------------------------------------------------------	|
+| String    	| VARCHAR(1024)       	| Any characters, with a maximum field length of 1024 characters.                            	|
+| Date/Time 	| TIMESTAMP           	| Stores year, month, day, hour, minute and second values as `YYYY-MM-DD hh:mm:ss`.          	|
+| Date/Time 	| DATE                	| A date. Format: `YYYY-MM-DD`. The supported range is from '`1000-01-01`' to '`9999-12-31`' 	|
+| Numeric   	| DOUBLE PRECISION    	| Numerical, with up to 17 significant digits decimal precision.                             	|
+| Numeric   	| INT                 	| Allows whole numbers between `-2,147,483,648` and `2,147,483,647`                          	|
 
 ---
 # Window function  
