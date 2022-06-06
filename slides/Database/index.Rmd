@@ -199,26 +199,28 @@ knitr::kable(head(dim_customer), format = 'html')
 # The most used 20%
 
 .pull-left[
+
 - Basic: retrieve, filter, sort, aggregate, group
-- Intermediate: subquery, temporary table, join, window function
+
+- Intermediate: subquery, temporary table, join
 
 <img src="images/2080.png" alt="HTML5 Icon" style="height:400px;">
 ]
 
 --
 .pull-right[
-- Advanced: data types/format, string and date, pivoting data
+- Advanced: window function, data types/format, string and date, pivoting data
 
 <img src="images/ambitious_rabbit.png" alt="HTML5 Icon" style="height:450px;">
 ]
 
 ---
 
-# Basic SQL: 
+# Basic: retrieve and filter
 
 .pull-left[
 
-**Retrieve**
+**Retrieve**: `SELECT`, `FROM`
 - Select `First_Name` and `Last_Name` from table `dim_customer`
 
 ```sql
@@ -227,30 +229,35 @@ FROM
 dim_customer
 ```
 
-**Filer**
+**Filter**: `WHERE`, `LIMIT`
 
-- Select the first 10 sales records with `Amount > 100` and only show the first 10 records
+- Select the first 10 sales records with `Amount > 50` and only show the first 10 records
 
 ```sql
-SELECT *
+SELECT * -- select all columns
 FROM fact_sales
-WHERE Amount > 100
+WHERE Amount > 50
 LIMIT 10
 ```
 ]
 
---
-
 .pull-right[
+<img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;">
+]
+---
 
-**Sort**
+# Basic: sort, aggregate and group
 
-- Select the top 10 sales records with `Amount > 100`, ordered by `Amount` from high to low
+.pull-left[
+
+**Sort**: `ORDER BY`, `DESC`
+
+- Select the top 10 sales records with `Amount > 50`, ordered by `Amount` from high to low
 
 ```sql
 SELECT *
 FROM fact_sales
-WHERE Amount > 100
+WHERE Amount > 50
 ORDER BY Amount DESC
 LIMIT 10
 ```
@@ -260,28 +267,41 @@ LIMIT 10
 - Average `Amount` each customer buy (Other aggregate functions: `MAX`, `MIN` , `SUM`, `COUNT`)
 
 ```sql
-SELECT FK_Customer_ID, AVG(Amount) as Avg_Amount
+SELECT FK_Customer_ID, AVG(Amount) as Avg_Amount -- name variable
 FROM fact_sales
 GROUP BY FK_Customer_ID
 ```
+]
+
+.pull-right[
+<img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;">
 ]
 
 ---
 
 # Basic SQL recap
 
+- `SELECT`, `FROM`, `AS`
+- `WHERE`, `LIMIT`
+- `ORDER BY`, `DESC`
+- `GROUP BY`
+- `MAX`
+- `MIN`
+- `AVG`
+- `SUM`
+- `COUNT`
+- `COUNT DISTINCT`
 
 ---
 
-# Subquery
+# Intermediate: subquery
 
+.pull-left[
 - **What is it?** query in query
 
 - **When do we need it?** get information from multiple sources
 
---
-
-Example: name and email of customers who have had an order with `Amount > 100`. The `Amount` information is in table `fact_sales` and the customer information is in table `dim_customer`
+Example: select name and email of customers who have had an order with `Amount > 50`. The `Amount` information is in table `fact_sales` and the customer information is in table `dim_customer`
 
 ```SQL
 SELECT PK_Customer_ID, First_Name, Last_Name, Email
@@ -289,9 +309,15 @@ FROM dim_customer
 WHERE PK_Customer_ID IN (
 		SELECT customerID
 		FROM fact_sales
-		WHERE Amount > 100
+		WHERE Amount > 50
 		);
 ```
+]
+
+.pull-right[
+<img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;">
+]
+
 
 ---
 
@@ -338,11 +364,13 @@ FROM temp_table
 ```
 
 ---
-# Join: The real power of SQL
+# Intermediate: join (real power of SQL!)
+
+
+.pull-left[
 
 **Data retrieval from multiple tables in one query**
 
-.pull-left[
 **Different types of joins**
 - `INNER JOIN` selects records that have matching values in both tables
 - `LEFT JOIN` returns all rows from the left table, even if there are no matches in the right table 
@@ -357,19 +385,37 @@ FROM temp_table
 ---
 # Join example
 
-Example: Find the email of those customers who had an order with `Amount > 100` 
+.pull-left[
+Example: Find the email of those customers who had an order with `Amount > 50` 
 
 ```sql
 SELECT cus.Email, sale.Amount
 FROM dim_customer AS cus
-INNER JOIN fact_sales AS sale ON cus.PK_Customer_ID = sale.FK_Customer_ID
-WHERE sale.Amount > 100
+INNER JOIN fact_sales AS sale 
+  ON cus.PK_Customer_ID = sale.FK_Customer_ID
+WHERE sale.Amount > 50
 ```
---
 
 > We use **aliases** in this query. It is often used when performing joins to make like easier.
 
---
+]
+
+.pull-right[
+<img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;">
+]
+
+---
+# Join example
+
+.pull-left[
+
+```sql
+SELECT cus.Email, sale.Amount
+FROM dim_customer AS cus
+INNER JOIN fact_sales AS sale 
+  ON cus.PK_Customer_ID = sale.FK_Customer_ID
+WHERE sale.Amount > 50
+```
 
 Instead of using `WHERE`, you can also filter in the `ON` clause:
 
@@ -378,15 +424,24 @@ SELECT cus.Email, sale.Amount
 FROM dim_customer AS cus
 INNER JOIN fact_sales AS sale 
       ON cus.PK_Customer_ID = sale.FK_Customer_ID
-      AND sale.Amount > 100
+      AND sale.Amount > 50
 ```
-
---
 
 > **Question: How can you use subquery to do the same?**
 
+]
+
+.pull-right[
+<img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;">
+]
+
 ---
-# Window function
+# Intermediate SQL recap
+
+- `INNER JOIN`
+
+---
+# Advanced: window function
 
 This [PostgreSQL documentation](https://www.postgresql.org/docs/9.1/tutorial-window.html) provides an excellent description of window functions:
 > A _window function_ performs **a calculation across a set of table rows** that are somehow related to the current row. This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular aggregate functions, use of a window function **does not** cause rows to become **grouped into a single output row** — the rows retain their separate identities. Behind the scenes, the window function is able to access more than just the current row of the query result.
@@ -406,18 +461,30 @@ SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM emps
  personnel |     2 |   3900 | 3700.0000000000000000
 ...
 ```
-
 ---
+
 # Window function example
 
 Common functions: `CASE WHEN`, `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `LAG()`, `LEAD()`
 
 ```sql
-SELECT *, DENSE_RANK(Amount) OVER (PARTITION BY FK_Product_ID)
+SELECT FK_Product_ID,
+	Amount,
+	RANK(Amount) OVER (PARTITION BY FK_Product_ID) AS rank_amount,
+	DENSE_RANK(Amount) OVER (PARTITION BY FK_Product_ID) AS dense_rank_amount
+ORDER BY 1, 2
+```
 
+```html
+  FK_Product_ID Amount rank_amount dense_rank_amount
+             75     56           1                 1
+             76    112           1                 2
+             88     56           1                 1
+             88     56           1                 1
+             88    112           3                 2
+             88    168           4                 3
 ```
 ---
-
 # Data types
 
 Three main data types: **string**, **numeric**, and **date/time**
@@ -430,15 +497,33 @@ Three main data types: **string**, **numeric**, and **date/time**
 | Numeric   	| DOUBLE PRECISION    	| Numerical, with up to 17 significant digits decimal precision.                             	|
 | Numeric   	| INT                 	| Allows whole numbers between `-2,147,483,648` and `2,147,483,647`                          	|
 
+> Convert between data types:  `CAST(column_name AS integer)` or `column_name::integer`
 
 ---
-# String
+# When do you need to convert the data type?
+
+- Building pipeline: move data from one database to another
+
+- User id in one table is `STRING`, but is `INT` in the other. And you need to join the two
+
+- Numbers as `STRING` and you need to calculate the `SUM`
+
+- `DATE` v.s `STRING` 
+
+- Calculate percentage of two `INT` (often count)
+    - `# in each country / # total customers` may give you 0
+    - Trick: `# in each country * 1.0 / # total customers`
 
 ---
-# Date
+# Advanced: others
 
----
-# Pivoting data
+- [Date](https://mode.com/sql-tutorial/sql-datetime-format/)
+
+- [String](https://mode.com/sql-tutorial/sql-string-functions-for-cleaning/)
+
+- [Pivoting data](https://mode.com/sql-tutorial/sql-pivot-table/) 
+
+- Where can I practice SQL? [Leetcode](https://leetcode.com)
 
 ---
 class: inverse center middle

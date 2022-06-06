@@ -149,48 +149,48 @@ https://course2022.scientistcafe.com/
    &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 98752 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 40 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 119.20 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 151 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 76 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 29573 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 786 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2342.28 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 151 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 75 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 10947 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 62.58 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 152 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 36 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 37257 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 286.08 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 155 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 95726 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 115 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 342.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 87 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:right;"&gt; 156 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 88 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 34729 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 44.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -277,26 +277,28 @@ https://course2022.scientistcafe.com/
 # The most used 20%
 
 .pull-left[
+
 - Basic: retrieve, filter, sort, aggregate, group
-- Intermediate: subquery, temporary table, join, window function
+
+- Intermediate: subquery, temporary table, join
 
 &lt;img src="images/2080.png" alt="HTML5 Icon" style="height:400px;"&gt;
 ]
 
 --
 .pull-right[
-- Advanced: data types/format, string and date, pivoting data
+- Advanced: window function, data types/format, string and date, pivoting data
 
 &lt;img src="images/ambitious_rabbit.png" alt="HTML5 Icon" style="height:450px;"&gt;
 ]
 
 ---
 
-# Basic SQL: 
+# Basic: retrieve and filter
 
 .pull-left[
 
-**Retrieve**
+**Retrieve**: `SELECT`, `FROM`
 - Select `First_Name` and `Last_Name` from table `dim_customer`
 
 ```sql
@@ -305,30 +307,35 @@ FROM
 dim_customer
 ```
 
-**Filer**
+**Filter**: `WHERE`, `LIMIT`
 
-- Select the first 10 sales records with `Amount &gt; 100` and only show the first 10 records
+- Select the first 10 sales records with `Amount &gt; 50` and only show the first 10 records
 
 ```sql
-SELECT *
+SELECT * -- select all columns
 FROM fact_sales
-WHERE Amount &gt; 100
+WHERE Amount &gt; 50
 LIMIT 10
 ```
 ]
 
---
-
 .pull-right[
+&lt;img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;"&gt;
+]
+---
 
-**Sort**
+# Basic: sort, aggregate and group
 
-- Select the top 10 sales records with `Amount &gt; 100`, ordered by `Amount` from high to low
+.pull-left[
+
+**Sort**: `ORDER BY`, `DESC`
+
+- Select the top 10 sales records with `Amount &gt; 50`, ordered by `Amount` from high to low
 
 ```sql
 SELECT *
 FROM fact_sales
-WHERE Amount &gt; 100
+WHERE Amount &gt; 50
 ORDER BY Amount DESC
 LIMIT 10
 ```
@@ -338,28 +345,41 @@ LIMIT 10
 - Average `Amount` each customer buy (Other aggregate functions: `MAX`, `MIN` , `SUM`, `COUNT`)
 
 ```sql
-SELECT FK_Customer_ID, AVG(Amount) as Avg_Amount
+SELECT FK_Customer_ID, AVG(Amount) as Avg_Amount -- name variable
 FROM fact_sales
 GROUP BY FK_Customer_ID
 ```
+]
+
+.pull-right[
+&lt;img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;"&gt;
 ]
 
 ---
 
 # Basic SQL recap
 
+- `SELECT`, `FROM`, `AS`
+- `WHERE`, `LIMIT`
+- `ORDER BY`, `DESC`
+- `GROUP BY`
+- `MAX`
+- `MIN`
+- `AVG`
+- `SUM`
+- `COUNT`
+- `COUNT DISTINCT`
 
 ---
 
-# Subquery
+# Intermediate: subquery
 
+.pull-left[
 - **What is it?** query in query
 
 - **When do we need it?** get information from multiple sources
 
---
-
-Example: name and email of customers who have had an order with `Amount &gt; 100`. The `Amount` information is in table `fact_sales` and the customer information is in table `dim_customer`
+Example: select name and email of customers who have had an order with `Amount &gt; 50`. The `Amount` information is in table `fact_sales` and the customer information is in table `dim_customer`
 
 ```SQL
 SELECT PK_Customer_ID, First_Name, Last_Name, Email
@@ -367,9 +387,15 @@ FROM dim_customer
 WHERE PK_Customer_ID IN (
 		SELECT customerID
 		FROM fact_sales
-		WHERE Amount &gt; 100
+		WHERE Amount &gt; 50
 		);
 ```
+]
+
+.pull-right[
+&lt;img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;"&gt;
+]
+
 
 ---
 
@@ -416,11 +442,13 @@ FROM temp_table
 ```
 
 ---
-# Join: The real power of SQL
+# Intermediate: join (real power of SQL!)
+
+
+.pull-left[
 
 **Data retrieval from multiple tables in one query**
 
-.pull-left[
 **Different types of joins**
 - `INNER JOIN` selects records that have matching values in both tables
 - `LEFT JOIN` returns all rows from the left table, even if there are no matches in the right table 
@@ -435,19 +463,37 @@ FROM temp_table
 ---
 # Join example
 
-Example: Find the email of those customers who had an order with `Amount &gt; 100` 
+.pull-left[
+Example: Find the email of those customers who had an order with `Amount &gt; 50` 
 
 ```sql
 SELECT cus.Email, sale.Amount
 FROM dim_customer AS cus
-INNER JOIN fact_sales AS sale ON cus.PK_Customer_ID = sale.FK_Customer_ID
-WHERE sale.Amount &gt; 100
+INNER JOIN fact_sales AS sale 
+  ON cus.PK_Customer_ID = sale.FK_Customer_ID
+WHERE sale.Amount &gt; 50
 ```
---
 
 &gt; We use **aliases** in this query. It is often used when performing joins to make like easier.
 
---
+]
+
+.pull-right[
+&lt;img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;"&gt;
+]
+
+---
+# Join example
+
+.pull-left[
+
+```sql
+SELECT cus.Email, sale.Amount
+FROM dim_customer AS cus
+INNER JOIN fact_sales AS sale 
+  ON cus.PK_Customer_ID = sale.FK_Customer_ID
+WHERE sale.Amount &gt; 50
+```
 
 Instead of using `WHERE`, you can also filter in the `ON` clause:
 
@@ -456,15 +502,24 @@ SELECT cus.Email, sale.Amount
 FROM dim_customer AS cus
 INNER JOIN fact_sales AS sale 
       ON cus.PK_Customer_ID = sale.FK_Customer_ID
-      AND sale.Amount &gt; 100
+      AND sale.Amount &gt; 50
 ```
-
---
 
 &gt; **Question: How can you use subquery to do the same?**
 
+]
+
+.pull-right[
+&lt;img src="images/dim_fact_exp.png" alt="HTML5 Icon" style="height:450px;"&gt;
+]
+
 ---
-# Window function
+# Intermediate SQL recap
+
+- `INNER JOIN`
+
+---
+# Advanced: window function
 
 This [PostgreSQL documentation](https://www.postgresql.org/docs/9.1/tutorial-window.html) provides an excellent description of window functions:
 &gt; A _window function_ performs **a calculation across a set of table rows** that are somehow related to the current row. This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular aggregate functions, use of a window function **does not** cause rows to become **grouped into a single output row** — the rows retain their separate identities. Behind the scenes, the window function is able to access more than just the current row of the query result.
@@ -484,9 +539,30 @@ SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM emps
  personnel |     2 |   3900 | 3700.0000000000000000
 ...
 ```
-
 ---
 
+# Window function example
+
+Common functions: `CASE WHEN`, `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `LAG()`, `LEAD()`
+
+```sql
+SELECT FK_Product_ID,
+	Amount,
+	RANK(Amount) OVER (PARTITION BY FK_Product_ID) AS rank_amount,
+	DENSE_RANK(Amount) OVER (PARTITION BY FK_Product_ID) AS dense_rank_amount
+ORDER BY 1, 2
+```
+
+```html
+  FK_Product_ID Amount rank_amount dense_rank_amount
+             75     56           1                 1
+             76    112           1                 2
+             88     56           1                 1
+             88     56           1                 1
+             88    112           3                 2
+             88    168           4                 3
+```
+---
 # Data types
 
 Three main data types: **string**, **numeric**, and **date/time**
@@ -499,11 +575,33 @@ Three main data types: **string**, **numeric**, and **date/time**
 | Numeric   	| DOUBLE PRECISION    	| Numerical, with up to 17 significant digits decimal precision.                             	|
 | Numeric   	| INT                 	| Allows whole numbers between `-2,147,483,648` and `2,147,483,647`                          	|
 
----
-# Window function  
+&gt; Convert between data types:  `CAST(column_name AS integer)` or `column_name::integer`
 
 ---
-# Pivoting data
+# When do you need to convert the data type?
+
+- Building pipeline: move data from one database to another
+
+- User id in one table is `STRING`, but is `INT` in the other. And you need to join the two
+
+- Numbers as `STRING` and you need to calculate the `SUM`
+
+- `DATE` v.s `STRING` 
+
+- Calculate percentage of two `INT` (often count)
+    - `# in each country / # total customers` may give you 0
+    - Trick: `# in each country * 1.0 / # total customers`
+
+---
+# Advanced: others
+
+- [Date](https://mode.com/sql-tutorial/sql-datetime-format/)
+
+- [String](https://mode.com/sql-tutorial/sql-string-functions-for-cleaning/)
+
+- [Pivoting data](https://mode.com/sql-tutorial/sql-pivot-table/) 
+
+- Where can I practice SQL? [Leetcode](https://leetcode.com)
 
 ---
 class: inverse center middle
