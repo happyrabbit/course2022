@@ -18,4 +18,4 @@ permalink: /course-syllabus/
 | Break | 30 mins | |
 | Deep learning in a nutshell  | 60 mins | [Slides]() |
 | Break | 10 mins |  |
-| Deep learning hands-on | 30 mins | |
+| Deep learning hands-on | 30 mins | [MINST with one hidden layer](https://github.com/happyrabbit/IntroDataScience/blob/master/Python/MINST_with_one_hidden_layer.ipynb)|
