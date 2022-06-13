@@ -1,6 +1,5 @@
 ---
 title: "Database and SQL"
-author: 'Hui Lin and Ming Li'
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -24,7 +23,6 @@ knitr::opts_chunk$set(
   hiline = TRUE
 )
 ```
-
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
